@@ -4,12 +4,12 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ra-dmz-web",
+        "namePrefix": "ts-dmz-web",
         "computerNamePrefix": "web",
         "size": "Standard_DS1_v2",
         "osType": "linux",
-        "adminUsername": "testuser",
-        "adminPassword": "AweS0me@PW",
+        "adminUsername": "reTHINK",
+        "adminPassword": "q1w2e3r4t5Y^",
         "sshPublicKey": "",
         "osAuthenticationType": "password",
         "nics": [
@@ -20,7 +20,7 @@
             "isPrimary": "true",
             "enableIPForwarding": false,
             "domainNameLabelPrefix": "",
-            "dnsServers": [ ]
+            "dnsServers": []
           }
         ],
         "imageReference": {
@@ -52,7 +52,7 @@
               "fileUris": [ "https://raw.githubusercontent.com/mspnp/reference-architectures/master/dmz/secure-vnet-hybrid/extensions/linux/install-apache.sh" ],
               "commandToExecute": "sh install-apache.sh"
             },
-            "protectedSettingsConfig": { }
+            "protectedSettingsConfig": {}
           }
         ],
         "availabilitySet": {
@@ -63,7 +63,7 @@
     },
     "loadBalancerSettings": {
       "value": {
-        "name": "ra-dmz-web-lb",
+        "name": "ts-dmz-web-lb",
         "frontendIPConfigurations": [
           {
             "name": "fe-config1",
@@ -116,8 +116,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-vnet",
-        "resourceGroup": "ra-public-dmz-network-rg"
+        "name": "ts-vnet",
+        "resourceGroup": "ts-public-dmz-network-rg"
       }
     },
     "buildingBlockSettings": {

@@ -4,8 +4,8 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-vnet",
-        "resourceGroup": "ra-public-dmz-network-rg",
+        "name": "ts-vnet",
+        "resourceGroup": "ts-public-dmz-network-rg",
         "addressPrefixes": [
           "10.0.0.0/16"
         ],
@@ -45,6 +45,10 @@
           {
             "name": "data",
             "addressPrefix": "10.0.3.0/24"
+          },
+          {
+            "name": "research",
+            "addressPrefix": "10.0.4.0/24"
           }
         ],
         "dnsServers": [ ]

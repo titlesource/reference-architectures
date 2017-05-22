@@ -33,7 +33,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-vnet-deployment",
+      "name": "ts-vnet-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -47,9 +47,9 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-vpn-deployment",
+      "name": "ts-vpn-deployment",
       "dependsOn": [
-        "ra-vnet-deployment"
+        "ts-vnet-deployment"
       ],
       "properties": {
         "mode": "Incremental",

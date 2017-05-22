@@ -32,8 +32,8 @@
           "virtualMachineSettings": {
             "count": 2,
             "size": "Standard_DS2_v2",
-            "adminUsername": "testuser",
-            "adminPassword": "AweS0me@PW",
+            "adminUsername": "reTHINK",
+            "adminPassword": "q1w2e3r4t5Y^",
             "sshPublicKey": "",
             "osAuthenticationType": "password",
             "imageReference": {
@@ -56,12 +56,12 @@
                   ],
                   "commandToExecute": "bash enable-iptables-routes.sh internal 10.0.1.100"
                 },
-                "protectedSettingsConfig": { }
+                "protectedSettingsConfig": {}
               }
             ]
           }
         },
-        "securedAddressSpace": [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24" ],
+        "securedAddressSpace": [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24" ],
         "subnets": {
           "useExistingSubnets": "yes",
           "inSubnet": {
@@ -78,8 +78,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ra-vnet",
-        "resourceGroup": "ra-public-dmz-network-rg"
+        "name": "ts-vnet",
+        "resourceGroup": "ts-public-dmz-network-rg"
       }
     }
   }

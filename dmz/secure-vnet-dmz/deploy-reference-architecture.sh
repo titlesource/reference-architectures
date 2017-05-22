@@ -1,7 +1,7 @@
 #!/bin/bash
 
-NETWORK_RESOURCE_GROUP_NAME="ra-public-dmz-network-rg"
-WORKLOAD_RESOURCE_GROUP_NAME="ra-public-dmz-wl-rg"
+NETWORK_RESOURCE_GROUP_NAME="ts-public-dmz-network-rg"
+WORKLOAD_RESOURCE_GROUP_NAME="ts-public-dmz-wl-rg"
 LOCATION="centralus"
 
 BUILDINGBLOCKS_ROOT_URI=${BUILDINGBLOCKS_ROOT_URI:="https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/"}
@@ -119,47 +119,47 @@ WORKLOAD_RESOURCE_GROUP_OUTPUT=$(azure group create --name $WORKLOAD_RESOURCE_GR
 
 # Create the virtual network
 echo "Deploying virtual network..."
-azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ra-vnet-deployment" \
+azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-vnet-deployment" \
 --template-uri $VIRTUAL_NETWORK_TEMPLATE_URI --parameters-file $VIRTUAL_NETWORK_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying load balancer and virtual machines in web subnet..."
-azure group deployment create --resource-group $WORKLOAD_RESOURCE_GROUP_NAME --name "ra-web-lb-vms-deployment" \
+azure group deployment create --resource-group $WORKLOAD_RESOURCE_GROUP_NAME --name "ts-web-lb-vms-deployment" \
 --template-uri $LOAD_BALANCER_TEMPLATE_URI --parameters-file $WEB_SUBNET_LOADBALANCER_AND_VMS_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying load balancer and virtual machines in biz subnet..."
-azure group deployment create --resource-group $WORKLOAD_RESOURCE_GROUP_NAME --name "ra-biz-lb-vms-deployment" \
+azure group deployment create --resource-group $WORKLOAD_RESOURCE_GROUP_NAME --name "ts-biz-lb-vms-deployment" \
 --template-uri $LOAD_BALANCER_TEMPLATE_URI --parameters-file $BIZ_SUBNET_LOADBALANCER_AND_VMS_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying load balancer and virtual machines in data subnet..."
-azure group deployment create --resource-group $WORKLOAD_RESOURCE_GROUP_NAME --name "ra-data-lb-vms-deployment" \
+azure group deployment create --resource-group $WORKLOAD_RESOURCE_GROUP_NAME --name "ts-data-lb-vms-deployment" \
 --template-uri $LOAD_BALANCER_TEMPLATE_URI --parameters-file $DATA_SUBNET_LOADBALANCER_AND_VMS_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying jumpbox in mgmt subnet..."
-azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ra-mgmt-vms-deployment" \
+azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-mgmt-vms-deployment" \
 --template-uri $MULTI_VMS_TEMPLATE_URI --parameters-file $MGMT_SUBNET_VMS_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying dmz..."
-azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ra-dmz-deployment" \
+azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-dmz-deployment" \
 --template-uri $DMZ_TEMPLATE_URI --parameters-file $DMZ_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying internet dmz..."
-azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ra-internet-dmz-deployment" \
+azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-internet-dmz-deployment" \
 --template-uri $DMZ_TEMPLATE_URI --parameters-file $INTERNET_DMZ_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying vpn..."
-azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ra-vpn-deployment" \
+azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-vpn-deployment" \
 --template-uri $VPN_TEMPLATE_URI --parameters-file $VPN_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying network security group..."
-azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ra-nsg-deployment" \
+azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-nsg-deployment" \
 --template-uri $NETWORK_SECURITY_GROUPS_TEMPLATE_URI --parameters-file $NETWORK_SECURITY_GROUPS_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 

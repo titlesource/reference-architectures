@@ -41,8 +41,8 @@ $internetDmzParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameter
 $vpnParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "vpn.parameters.json")
 $networkSecurityGroupsParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "networkSecurityGroups.parameters.json")
 
-$networkResourceGroupName = "ra-public-dmz-network-rg"
-$workloadResourceGroupName = "ra-public-dmz-wl-rg"
+$networkResourceGroupName = "ts-public-dmz-network-rg"
+$workloadResourceGroupName = "ts-public-dmz-wl-rg"
 
 # Login to Azure and select your subscription
 Login-AzureRmAccount -SubscriptionId $SubscriptionId | Out-Null
@@ -52,37 +52,37 @@ $networkResourceGroup = New-AzureRmResourceGroup -Name $networkResourceGroupName
 $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
 
 Write-Host "Deploying virtual network..."
-New-AzureRmResourceGroupDeployment -Name "ra-vnet-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-vnet-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $virtualNetworkTemplate.AbsoluteUri -TemplateParameterFile $virtualNetworkParametersFile
 
 Write-Host "Deploying load balancer and virtual machines in web subnet..."
-New-AzureRmResourceGroupDeployment -Name "ra-web-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-web-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
     -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $webSubnetLoadBalancerAndVMsParametersFile
 
 Write-Host "Deploying load balancer and virtual machines in biz subnet..."
-New-AzureRmResourceGroupDeployment -Name "ra-biz-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-biz-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
     -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $bizSubnetLoadBalancerAndVMsParametersFile
 
 Write-Host "Deploying load balancer and virtual machines in data subnet..."
-New-AzureRmResourceGroupDeployment -Name "ra-data-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-data-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
     -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $dataSubnetLoadBalancerAndVMsParametersFile
 
 Write-Host "Deploying jumpbox in mgmt subnet..."
-New-AzureRmResourceGroupDeployment -Name "ra-mgmt-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-mgmt-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $multiVMsTemplate.AbsoluteUri -TemplateParameterFile $mgmtSubnetVMsParametersFile
 
 Write-Host "Deploying private dmz..."
-New-AzureRmResourceGroupDeployment -Name "ra-private-dmz-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-private-dmz-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $dmzTemplate.AbsoluteUri -TemplateParameterFile $dmzParametersFile
 
 Write-Host "Deploying public dmz..."
-New-AzureRmResourceGroupDeployment -Name "ra-public-dmz-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-public-dmz-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $dmzTemplate.AbsoluteUri -TemplateParameterFile $internetDmzParametersFile
 
 Write-Host "Deploying vpn..."
-New-AzureRmResourceGroupDeployment -Name "ra-vpn-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-vpn-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $vpnTemplate.AbsoluteUri -TemplateParameterFile $vpnParametersFile
 
 Write-Host "Deploying nsgs..."
-New-AzureRmResourceGroupDeployment -Name "ra-nsg-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Name "ts-nsg-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $networkSecurityGroupsTemplate.AbsoluteUri -TemplateParameterFile $networkSecurityGroupsParametersFile

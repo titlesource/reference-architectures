@@ -33,7 +33,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-web-lb-vms-deployment",
+      "name": "ts-web-lb-vms-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -47,7 +47,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-biz-lb-vms-deployment",
+      "name": "ts-biz-lb-vms-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -61,7 +61,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-data-lb-vms-deployment",
+      "name": "ts-data-lb-vms-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {

@@ -15,7 +15,7 @@
     <None Include="workload.azuredeploy.json" />
     <None Include="virtualNetwork.azuredeploy.json" />
     <None Include="deploy-reference-architecture.sh" />
-    <None Include="Deploy-ReferenceArchitecture.ps1" />
+    <Content Include="Deploy-ReferenceArchitecture.ps1" />
     <None Include="extensions\linux\install-apache.sh" />
     <None Include="extensions\windows\iisaspnet.ps1.zip" />
     <None Include="parameters\internet-dmz.parameters.json" />

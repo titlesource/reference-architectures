@@ -36,7 +36,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-mgmt-vms-deployment",
+      "name": "ts-mgmt-vms-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -50,7 +50,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-dmz-deployment",
+      "name": "ts-dmz-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -64,7 +64,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-internet-dmz-deployment",
+      "name": "ts-internet-dmz-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -78,7 +78,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "name": "ra-nsg-deployment",
+      "name": "ts-nsg-deployment",
       "properties": {
         "mode": "Incremental",
         "templateLink": {
