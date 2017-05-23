@@ -14,7 +14,7 @@
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "true",
+            "isPublic": "false",
             "subnetName": "mgmt",
             "privateIPAllocationMethod": "dynamic",
             "isPrimary": "true",

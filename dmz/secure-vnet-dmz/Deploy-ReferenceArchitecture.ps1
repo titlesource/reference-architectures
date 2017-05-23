@@ -5,7 +5,7 @@ param(
   [Parameter(Mandatory=$true)]
   $SubscriptionId,
   [Parameter(Mandatory=$false)]
-  $Location = "West US 2"
+  $Location = "East US 2"
 )
 
 $ErrorActionPreference = "Stop"
