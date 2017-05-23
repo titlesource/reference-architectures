@@ -36,6 +36,7 @@ $webSubnetLoadBalancerAndVMsParametersFile = [System.IO.Path]::Combine($PSScript
 $bizSubnetLoadBalancerAndVMsParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "loadBalancer-biz-subnet.parameters.json")
 $dataSubnetLoadBalancerAndVMsParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "loadBalancer-data-subnet.parameters.json")
 $mgmtSubnetVMsParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "virtualMachines-mgmt-subnet.parameters.json")
+$researchSubnetVMsParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "virtualMachines-research-subnet.parameters.json")
 $dmzParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "dmz.parameters.json")
 $internetDmzParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "internet-dmz.parameters.json")
 $vpnParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "vpn.parameters.json")
@@ -70,6 +71,10 @@ New-AzureRmResourceGroupDeployment -Name "ts-data-lb-vms-deployment" -ResourceGr
 Write-Host "Deploying jumpbox in mgmt subnet..."
 New-AzureRmResourceGroupDeployment -Name "ts-mgmt-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $multiVMsTemplate.AbsoluteUri -TemplateParameterFile $mgmtSubnetVMsParametersFile
+	
+Write-Host "Deploying boxes in research subnet..."
+New-AzureRmResourceGroupDeployment -Name "ts-research-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+    -TemplateUri $multiVMsTemplate.AbsoluteUri -TemplateParameterFile $researchSubnetVMsParametersFile
 
 Write-Host "Deploying private dmz..."
 New-AzureRmResourceGroupDeployment -Name "ts-private-dmz-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `

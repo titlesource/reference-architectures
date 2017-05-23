@@ -26,6 +26,7 @@
       },
       "parameter": {
         "mgmtSubnetVMs": "[concat(parameters('parameterRootUri'), 'virtualMachines-mgmt-subnet.parameters.json')]",
+        "researchSubnetVMs": "[concat(parameters('parameterRootUri'), 'virtualMachines-research-subnet.parameters.json')]",
         "dmz": "[concat(parameters('parameterRootUri'), 'dmz.parameters.json')]",
         "internetDmz": "[concat(parameters('parameterRootUri'), 'internet-dmz.parameters.json')]",
         "networkSecurityGroups": "[concat(parameters('parameterRootUri'), 'networkSecurityGroups.parameters.json')]"
@@ -44,6 +45,20 @@
         },
         "parametersLink": {
           "uri": "[variables('templates').parameter.mgmtSubnetVMs]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "name": "ts-research-vms-deployment",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('templates').deployment.multiVMs]"
+        },
+        "parametersLink": {
+          "uri": "[variables('templates').parameter.researchSubnetVMs]"
         }
       }
     },

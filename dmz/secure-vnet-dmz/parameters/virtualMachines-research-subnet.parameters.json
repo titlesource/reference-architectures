@@ -4,7 +4,7 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ts-dmz-jb",
+        "namePrefix": "ts-dmz-research",
         "computerNamePrefix": "cn",
         "size": "Standard_DS1_v2",
         "osType": "windows",
@@ -14,19 +14,19 @@
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "true",
-            "subnetName": "mgmt",
+            "isPublic": "false",
+            "subnetName": "research",
             "privateIPAllocationMethod": "dynamic",
             "isPrimary": "true",
             "enableIPForwarding": false,
-            "domainNameLabelPrefix": "rejump",
+            "domainNameLabelPrefix": "",
             "dnsServers": []
           }
         ],
         "imageReference": {
-          "publisher": "MicrosoftWindowsServer",
-          "offer": "WindowsServer",
-          "sku": "2012-R2-Datacenter",
+          "publisher": "MicrosoftVisualStudio",
+          "offer": "VisualStudio",
+          "sku": "VS-2017-Ent-Win10-N",
           "version": "latest"
         },
         "dataDisks": {
@@ -68,7 +68,7 @@
         ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "mgmt-as"
+          "name": "research-as"
         }
       }
     },

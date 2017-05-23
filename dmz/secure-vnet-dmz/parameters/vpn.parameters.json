@@ -20,7 +20,7 @@
       "value": {
         "name": "ts-vpn-cn",
         "connectionType": "IPsec",
-        "sharedKey": "123secret",
+        "sharedKey": "q1w2e3r4t5Y^",
         "virtualNetworkGateway1": {
           "name": "ts-vpn-vgw"
         },

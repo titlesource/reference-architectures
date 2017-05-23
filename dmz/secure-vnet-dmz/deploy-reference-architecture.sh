@@ -106,6 +106,7 @@ WEB_SUBNET_LOADBALANCER_AND_VMS_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/loadBa
 BIZ_SUBNET_LOADBALANCER_AND_VMS_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/loadBalancer-biz-subnet.parameters.json"
 DATA_SUBNET_LOADBALANCER_AND_VMS_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/loadBalancer-data-subnet.parameters.json"
 MGMT_SUBNET_VMS_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/virtualMachines-mgmt-subnet.parameters.json"
+RESEARCH_SUBNET_VMS_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/virtualMachines-research-subnet.parameters.json"
 DMZ_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/dmz.parameters.json"
 INTERNET_DMZ_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/internet-dmz.parameters.json"
 VPN_PARAMETERS_FILE="${SCRIPT_DIR}/parameters/vpn.parameters.json"
@@ -141,6 +142,11 @@ azure group deployment create --resource-group $WORKLOAD_RESOURCE_GROUP_NAME --n
 echo "Deploying jumpbox in mgmt subnet..."
 azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-mgmt-vms-deployment" \
 --template-uri $MULTI_VMS_TEMPLATE_URI --parameters-file $MGMT_SUBNET_VMS_PARAMETERS_FILE \
+--subscription $SUBSCRIPTION_ID || exit 1
+
+echo "Deploying boxes in research subnet..."
+azure group deployment create --resource-group $NETWORK_RESOURCE_GROUP_NAME --name "ts-research-vms-deployment" \
+--template-uri $MULTI_VMS_TEMPLATE_URI --parameters-file $RESEARCH_SUBNET_VMS_PARAMETERS_FILE \
 --subscription $SUBSCRIPTION_ID || exit 1
 
 echo "Deploying dmz..."
