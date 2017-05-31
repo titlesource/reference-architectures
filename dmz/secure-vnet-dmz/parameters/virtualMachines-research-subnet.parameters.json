@@ -5,7 +5,7 @@
     "virtualMachinesSettings": {
       "value": {
         "namePrefix": "ts-dmz-research",
-        "computerNamePrefix": "cn",
+        "computerNamePrefix": "resbox",
         "size": "Standard_DS1_v2",
         "osType": "windows",
         "adminUsername": "reTHINK",

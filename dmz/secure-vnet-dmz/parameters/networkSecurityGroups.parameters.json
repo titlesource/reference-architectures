@@ -27,6 +27,17 @@
               "protocol": "*"
             },
             {
+              "name": "external-rdp-allow",
+              "direction": "Inbound",
+              "priority": 110,
+              "sourceAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*",
+              "destinationPortRange": "3389",
+              "access": "Allow",
+              "protocol": "*"
+            },
+            {
               "name": "on-prem-ssh-allow",
               "direction": "Inbound",
               "priority": 200,

@@ -5,7 +5,7 @@
     "virtualMachinesSettings": {
       "value": {
         "namePrefix": "ts-dmz-jb",
-        "computerNamePrefix": "cn",
+        "computerNamePrefix": "jbox",
         "size": "Standard_DS1_v2",
         "osType": "windows",
         "adminUsername": "reTHINK",
@@ -14,12 +14,13 @@
         "osAuthenticationType": "password",
         "nics": [
           {
-            "isPublic": "false",
+            "isPublic": "true",
+            "isPrimary": "true",
             "subnetName": "mgmt",
             "privateIPAllocationMethod": "dynamic",
-            "isPrimary": "true",
+            "publicIPAllocationMethod": "static",
             "enableIPForwarding": false,
-            "domainNameLabelPrefix": "rejump",
+            "domainNameLabelPrefix": "",
             "dnsServers": []
           }
         ],
