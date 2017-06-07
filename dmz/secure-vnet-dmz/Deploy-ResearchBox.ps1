@@ -48,9 +48,13 @@ $workloadResourceGroupName = "ts-public-dmz-wl-rg"
 # Login to Azure and select your subscription
 Login-AzureRmAccount -SubscriptionId $SubscriptionId | Out-Null
 
-# Create the resource group
+# Get the resource group
 $networkResourceGroup = Get-AzureRmResourceGroup -Name $networkResourceGroupName -Location $Location
 $workloadResourceGroup = Get-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
+
+Get-AzureRmResourceGroupDeployment -ResourceGroupName $networkResourceGroupName | Remove-AzureRmResourceGroupDeployment
+#Remove-AzureRmResourceGroupDeployment -Name $networkResourceGroupDeployment.Name -ResourceGroupName $networkResourceGroupName
+#Get-AzureRmResourceGroupDeployment -ResourceGroupName $workloadResourceGroupName | Remove-AzureRmResourceGroupDeployment
 
 #Write-Host "Deploying virtual network..."
 #New-AzureRmResourceGroupDeployment -Name "ts-vnet-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
@@ -73,7 +77,7 @@ $workloadResourceGroup = Get-AzureRmResourceGroup -Name $workloadResourceGroupNa
 #    -TemplateUri $multiVMsTemplate.AbsoluteUri -TemplateParameterFile $mgmtSubnetVMsParametersFile
 	
 Write-Host "Deploying boxes in research subnet..."
-New-AzureRmResourceGroupDeployment -Name "ts-research-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
+New-AzureRmResourceGroupDeployment -Mode Incremental -Name "ts-research-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $multiVMsTemplate.AbsoluteUri -TemplateParameterFile $researchSubnetVMsParametersFile
 
 #Write-Host "Deploying private dmz..."
