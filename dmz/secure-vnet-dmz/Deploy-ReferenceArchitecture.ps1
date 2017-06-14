@@ -1,4 +1,6 @@
-﻿#
+﻿# Azure Reference Architectures: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/
+# On GitHub: https://github.com/mspnp/reference-architectures
+# This Architecture is Based on: https://github.com/mspnp/reference-architectures/blob/master/dmz/secure-vnet-dmz/diagram.png
 # Deploy_ReferenceArchitecture.ps1
 #
 param(

@@ -1,4 +1,5 @@
-﻿#
+﻿# Current virtual machine sizes and pricing
+# https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/
 # Deploy_ResearchBox.ps1
 #
 param(
@@ -52,46 +53,9 @@ Login-AzureRmAccount -SubscriptionId $SubscriptionId | Out-Null
 $networkResourceGroup = Get-AzureRmResourceGroup -Name $networkResourceGroupName -Location $Location
 $workloadResourceGroup = Get-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
 
+# This removes all the deployment audit records because the limit is 800 and we don't need 800 audit records (or any for that matter)
 Get-AzureRmResourceGroupDeployment -ResourceGroupName $networkResourceGroupName | Remove-AzureRmResourceGroupDeployment
-#Remove-AzureRmResourceGroupDeployment -Name $networkResourceGroupDeployment.Name -ResourceGroupName $networkResourceGroupName
-#Get-AzureRmResourceGroupDeployment -ResourceGroupName $workloadResourceGroupName | Remove-AzureRmResourceGroupDeployment
-
-#Write-Host "Deploying virtual network..."
-#New-AzureRmResourceGroupDeployment -Name "ts-vnet-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
-#    -TemplateUri $virtualNetworkTemplate.AbsoluteUri -TemplateParameterFile $virtualNetworkParametersFile
-
-#Write-Host "Deploying load balancer and virtual machines in web subnet..."
-#New-AzureRmResourceGroupDeployment -Name "ts-web-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-#    -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $webSubnetLoadBalancerAndVMsParametersFile
-
-#Write-Host "Deploying load balancer and virtual machines in biz subnet..."
-#New-AzureRmResourceGroupDeployment -Name "ts-biz-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-#    -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $bizSubnetLoadBalancerAndVMsParametersFile
-
-#Write-Host "Deploying load balancer and virtual machines in data subnet..."
-#New-AzureRmResourceGroupDeployment -Name "ts-data-lb-vms-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-#    -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $dataSubnetLoadBalancerAndVMsParametersFile
-
-#Write-Host "Deploying jumpbox in mgmt subnet..."
-#New-AzureRmResourceGroupDeployment -Name "ts-mgmt-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
-#    -TemplateUri $multiVMsTemplate.AbsoluteUri -TemplateParameterFile $mgmtSubnetVMsParametersFile
 	
 Write-Host "Deploying boxes in research subnet..."
 New-AzureRmResourceGroupDeployment -Mode Incremental -Name "ts-research-vms-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
     -TemplateUri $multiVMsTemplate.AbsoluteUri -TemplateParameterFile $researchSubnetVMsParametersFile
-
-#Write-Host "Deploying private dmz..."
-#New-AzureRmResourceGroupDeployment -Name "ts-private-dmz-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
-#    -TemplateUri $dmzTemplate.AbsoluteUri -TemplateParameterFile $dmzParametersFile
-
-#Write-Host "Deploying public dmz..."
-#New-AzureRmResourceGroupDeployment -Name "ts-public-dmz-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
-#    -TemplateUri $dmzTemplate.AbsoluteUri -TemplateParameterFile $internetDmzParametersFile
-
-#Write-Host "Deploying vpn..."
-#New-AzureRmResourceGroupDeployment -Name "ts-vpn-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
-#    -TemplateUri $vpnTemplate.AbsoluteUri -TemplateParameterFile $vpnParametersFile
-
-#Write-Host "Deploying nsgs..."
-#New-AzureRmResourceGroupDeployment -Name "ts-nsg-deployment" -ResourceGroupName $networkResourceGroup.ResourceGroupName `
-#    -TemplateUri $networkSecurityGroupsTemplate.AbsoluteUri -TemplateParameterFile $networkSecurityGroupsParametersFile

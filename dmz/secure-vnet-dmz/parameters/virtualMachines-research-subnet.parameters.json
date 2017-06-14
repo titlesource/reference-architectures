@@ -6,7 +6,7 @@
       "value": {
         "namePrefix": "ts-dmz-research",
         "computerNamePrefix": "resbox",
-        "size": "Standard_DS2_v2",
+        "size": "Standard_D3_v2",
         "osType": "windows",
         "adminUsername": "reTHINK",
         "adminPassword": "q1w2e3r4t5Y^",
