@@ -4,8 +4,8 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ts-vnet",
-        "resourceGroup": "ts-public-dmz-network-rg"
+        "name": "ts-<<environment>>-<<location>>-vnet",
+        "resourceGroup": "ts-network-<<environment>>-<<location>>-rg"
       }
     },
     "virtualNetworkGatewaySettings": {
@@ -20,7 +20,7 @@
       "value": {
         "name": "ts-vpn-cn",
         "connectionType": "IPsec",
-        "sharedKey": "q1w2e3r4t5Y^",
+        "sharedKey": "<<vpnpassword>>",
         "virtualNetworkGateway1": {
           "name": "ts-vpn-vgw"
         },

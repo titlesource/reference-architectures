@@ -10,6 +10,9 @@ param(
   $Location = "East US 2"
 )
 
+#Set this!
+$env:TEMPLATE_ROOT_URI = "C:\Temp\MyTemplates\"
+
 $ErrorActionPreference = "Stop"
 
 $buildingBlocksRootUriString = $env:TEMPLATE_ROOT_URI
@@ -44,8 +47,8 @@ $internetDmzParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameter
 $vpnParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "vpn.parameters.json")
 $networkSecurityGroupsParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters", "networkSecurityGroups.parameters.json")
 
-$networkResourceGroupName = "ts-public-dmz-network-rg"
-$workloadResourceGroupName = "ts-public-dmz-wl-rg"
+$networkResourceGroupName = "ts-network-rg-<<environment>>-<<location>>"
+$workloadResourceGroupName = "ts-wl-rg-<<environment>>-<<location>>"
 
 # Login to Azure and select your subscription
 Login-AzureRmAccount -SubscriptionId $SubscriptionId | Out-Null

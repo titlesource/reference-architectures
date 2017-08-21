@@ -4,7 +4,7 @@
   "parameters": {
     "dmzSettings": {
       "value": {
-        "namePrefix": "internet-dmz",
+        "namePrefix": "ts-internet-dmz-<<environment>>-<<location>>",
         "endpoint": {
           "hasPublicEndpoint": "yes",
           "domainNameLabel": "",
@@ -30,8 +30,8 @@
           "virtualMachineSettings": {
             "count": 2,
             "size": "Standard_DS2_v2",
-            "adminUsername": "reTHINK",
-            "adminPassword": "q1w2e3r4t5Y^",
+            "adminUsername": "azureadmin",
+            "adminPassword": "<<adminpassword>>",
             "sshPublicKey": "",
             "osAuthenticationType": "password",
             "imageReference": {
@@ -54,7 +54,7 @@
                   ],
                   "commandToExecute": "bash enable-iptables-routes.sh internal 10.0.1.100"
                 },
-                "protectedSettingsConfig": { }
+                "protectedSettingsConfig": {}
               }
             ]
           }
@@ -63,11 +63,11 @@
         "subnets": {
           "useExistingSubnets": "yes",
           "inSubnet": {
-            "name": "public-dmz-in",
+            "name": "ts-public-dmz-in-<<environment>>-<<location>>",
             "addressPrefix": ""
           },
           "outSubnet": {
-            "name": "public-dmz-out",
+            "name": "ts-public-dmz-out-<<environment>>-<<location>>",
             "addressPrefix": ""
           }
         }
@@ -76,8 +76,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ts-vnet",
-        "resourceGroup": "ts-public-dmz-network-rg"
+        "name": "ts-<<environment>>-<<location>>-vnet",
+        "resourceGroup": "ts-network-<<environment>>-<<location>>-rg"
       }
     }
   }

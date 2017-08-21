@@ -4,15 +4,15 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ts-vnet",
-        "resourceGroup": "ts-public-dmz-network-rg"
+        "name": "ts-<<environment>>-<<location>>-vnet",
+        "resourceGroup": "ts-network-<<environment>>-<<location>>-rg"
       }
     },
     "networkSecurityGroupsSettings": {
       "value": [
         {
-          "name": "mgmt-nsg",
-          "subnets": [ "mgmt" ],
+          "name": "mgmt-nsg-<<environment>>-<<location>>",
+          "subnets": [ "mgmt-<<environment>>-<<location>>" ],
           "networkInterfaces": [],
           "securityRules": [
             {
@@ -84,8 +84,8 @@
           ]
         },
         {
-          "name": "web-nsg",
-          "subnets": [ "web" ],
+          "name": "web-nsg-<<environment>>-<<location>>",
+          "subnets": [ "web-<<environment>>-<<location>>" ],
           "networkInterfaces": [],
           "securityRules": [
             {
@@ -157,8 +157,8 @@
           ]
         },
         {
-          "name": "research-nsg",
-          "subnets": [ "research" ],
+          "name": "research-nsg-<<environment>>-<<location>>",
+          "subnets": [ "research-<<environment>>-<<location>>" ],
           "networkInterfaces": [],
           "securityRules": [
             {
@@ -219,8 +219,8 @@
           ]
         },
         {
-          "name": "biz-nsg",
-          "subnets": [ "biz" ],
+          "name": "biz-nsg-<<environment>>-<<location>>",
+          "subnets": [ "biz-<<environment>>-<<location>>" ],
           "networkInterfaces": [],
           "securityRules": [
             {
@@ -281,8 +281,8 @@
           ]
         },
         {
-          "name": "data-nsg",
-          "subnets": [ "data" ],
+          "name": "data-nsg-<<environment>>-<<location>>",
+          "subnets": [ "data-<<environment>>-<<location>>" ],
           "networkInterfaces": [],
           "securityRules": [
             {

@@ -4,13 +4,13 @@
   "parameters": {
     "dmzSettings": {
       "value": {
-        "namePrefix": "intranet-dmz",
+        "namePrefix": "ts-intranet-dmz-<<environment>>-<<location>>",
         "endpoint": {
           "hasPublicEndpoint": "no",
           "domainNameLabel": "",
           "internalLoadBalancerSettings": {
             "privateIPAddress": "10.0.0.10",
-            "subnetName": "private-dmz-in"
+            "subnetName": "ts-private-dmz-in-<<environment>>-<<location>>"
           }
         },
         "applianceSettings": {
@@ -32,8 +32,8 @@
           "virtualMachineSettings": {
             "count": 2,
             "size": "Standard_DS2_v2",
-            "adminUsername": "reTHINK",
-            "adminPassword": "q1w2e3r4t5Y^",
+            "adminUsername": "azureadmin",
+            "adminPassword": "<<adminpassword>>",
             "sshPublicKey": "",
             "osAuthenticationType": "password",
             "imageReference": {
@@ -65,11 +65,11 @@
         "subnets": {
           "useExistingSubnets": "yes",
           "inSubnet": {
-            "name": "private-dmz-in",
+            "name": "ts-private-dmz-in-<<environment>>-<<location>>",
             "addressPrefix": ""
           },
           "outSubnet": {
-            "name": "private-dmz-out",
+            "name": "ts-private-dmz-out-<<environment>>-<<location>>",
             "addressPrefix": ""
           }
         }
@@ -78,8 +78,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ts-vnet",
-        "resourceGroup": "ts-public-dmz-network-rg"
+        "name": "ts-<<environment>>-<<location>>-vnet",
+        "resourceGroup": "ts-network-<<environment>>-<<location>>-rg"
       }
     }
   }

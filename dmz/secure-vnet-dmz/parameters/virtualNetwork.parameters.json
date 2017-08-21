@@ -4,54 +4,54 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "ts-vnet",
-        "resourceGroup": "ts-public-dmz-network-rg",
+        "name": "ts-<<environment>>-<<location>>-vnet",
+        "resourceGroup": "ts-network-<<environment>>-<<location>>-rg",
         "addressPrefixes": [
-          "10.0.0.0/16"
+          "<<baseaddress>>/19"
         ],
         "subnets": [
           {
-            "name": "GatewaySubnet",
-            "addressPrefix": "10.0.255.224/27"
+            "name": "gateway-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-1>>.0/27"
           },
           {
-            "name": "mgmt",
-            "addressPrefix": "10.0.0.128/25"
+            "name": "mgmt-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-2>>.0/27"
           },
           {
-            "name": "private-dmz-in",
-            "addressPrefix": "10.0.0.0/27"
+            "name": "priv-dmz-in-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-3>>.0/27"
           },
           {
-            "name": "private-dmz-out",
-            "addressPrefix": "10.0.0.32/27"
+            "name": "priv-dmz-out-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-4>>.0/27"
           },
           {
-            "name": "public-dmz-in",
-            "addressPrefix": "10.0.0.64/27"
+            "name": "pub-dmz-in-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-5>>.0/27"
           },
           {
-            "name": "public-dmz-out",
-            "addressPrefix": "10.0.0.96/27"
+            "name": "pub-dmz-out-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-6>>.0/27"
           },
           {
-            "name": "web",
-            "addressPrefix": "10.0.1.0/24"
+            "name": "web-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-7>>.0/24"
           },
           {
-            "name": "biz",
-            "addressPrefix": "10.0.2.0/24"
+            "name": "biz-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-8>>.0/24"
           },
           {
-            "name": "data",
-            "addressPrefix": "10.0.3.0/24"
+            "name": "data-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-9>>.0/24"
           },
           {
-            "name": "research",
-            "addressPrefix": "10.0.4.0/24"
+            "name": "research-<<environment>>-<<location>>",
+            "addressPrefix": "10.196.<<increment-10>>.0/24"
           }
         ],
-        "dnsServers": [ ]
+        "dnsServers": []
       }
     }
   }

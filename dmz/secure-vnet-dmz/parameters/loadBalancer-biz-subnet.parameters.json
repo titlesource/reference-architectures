@@ -4,18 +4,18 @@
   "parameters": {
     "virtualMachinesSettings": {
       "value": {
-        "namePrefix": "ts-dmz-biz",
-        "computerNamePrefix": "biz",
+        "namePrefix": "ts-biz-<<environment>>-<<location>>",
+        "computerNamePrefix": "biz-<<environment>>-<<location>>",
         "size": "Standard_DS1_v2",
         "osType": "linux",
-        "adminUsername": "reTHINK",
-        "adminPassword": "q1w2e3r4t5Y^",
+        "adminUsername": "azureadmin",
+        "adminPassword": "<<adminpassword>>",
         "sshPublicKey": "",
         "osAuthenticationType": "password",
         "nics": [
           {
             "isPublic": "false",
-            "subnetName": "biz",
+            "subnetName": "biz-<<environment>>-<<location>>",
             "privateIPAllocationMethod": "dynamic",
             "isPrimary": "true",
             "enableIPForwarding": false,
@@ -57,13 +57,13 @@
         ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "biz-as"
+          "name": "biz-<<environment>>-<<location>>-as"
         }
       }
     },
     "loadBalancerSettings": {
       "value": {
-        "name": "ts-dmz-biz-lb",
+        "name": "ts-biz-<<environment>>-<<location>>-lb",
         "frontendIPConfigurations": [
           {
             "name": "fe-config1",
@@ -71,7 +71,7 @@
             "domainNameLabel": "",
             "internalLoadBalancerSettings": {
               "privateIPAddress": "10.0.2.100",
-              "subnetName": "biz"
+              "subnetName": "biz-<<environment>>-<<location>>"
             }
           }
         ],
@@ -116,8 +116,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "ts-vnet",
-        "resourceGroup": "ts-public-dmz-network-rg"
+        "name": "ts-<<environment>>-<<location>>-vnet",
+        "resourceGroup": "ts-network-<<environment>>-<<location>>-rg"
       }
     },
     "buildingBlockSettings": {
