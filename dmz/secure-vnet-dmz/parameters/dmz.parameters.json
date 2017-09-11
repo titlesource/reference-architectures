@@ -9,7 +9,7 @@
           "hasPublicEndpoint": "no",
           "domainNameLabel": "",
           "internalLoadBalancerSettings": {
-            "privateIPAddress": "10.0.0.10",
+            "privateIPAddress": "<<octet1>>.<<octet2>>.<<octet3>>.10",
             "subnetName": "ts-private-dmz-in-<<environment>>-<<location>>"
           }
         },
@@ -54,14 +54,14 @@
                   "fileUris": [
                     "https://raw.githubusercontent.com/mspnp/template-building-blocks/v1.0.0/templates/resources/Microsoft.Compute/virtualMachines/extensions/linux/enable-iptables-routes/enable-iptables-routes.sh"
                   ],
-                  "commandToExecute": "bash enable-iptables-routes.sh internal 10.0.1.100"
+                  "commandToExecute": "bash enable-iptables-routes.sh internal <<octet1>>.<<octet2>>.<<octet3>>.100"
                 },
                 "protectedSettingsConfig": {}
               }
             ]
           }
         },
-        "securedAddressSpace": [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24" ],
+        "securedAddressSpace": [ "<<octet1>>.<<octet2>>.<<octetincrement-1>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-2>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-3>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-4>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-5>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-6>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-7>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-8>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-9>>.0/24", "<<octet1>>.<<octet2>>.<<octetincrement-10>>.0/24" ],
         "subnets": {
           "useExistingSubnets": "yes",
           "inSubnet": {

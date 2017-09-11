@@ -70,7 +70,7 @@
             "loadBalancerType": "internal",
             "domainNameLabel": "",
             "internalLoadBalancerSettings": {
-              "privateIPAddress": "10.0.2.100",
+              "privateIPAddress": "<<octet1>>.<<octet2>>.<<octetincrement-8>>.100",
               "subnetName": "biz-<<environment>>-<<location>>"
             }
           }

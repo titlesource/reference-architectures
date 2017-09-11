@@ -7,48 +7,48 @@
         "name": "ts-<<environment>>-<<location>>-vnet",
         "resourceGroup": "ts-network-<<environment>>-<<location>>-rg",
         "addressPrefixes": [
-          "<<baseaddress>>/19"
+          "<<octet1>>.<<octet2>>.<<octet3>>.0/19"
         ],
         "subnets": [
           {
             "name": "gateway-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-1>>.0/27"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-1>>.0/27"
           },
           {
             "name": "mgmt-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-2>>.0/27"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-2>>.0/27"
           },
           {
             "name": "priv-dmz-in-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-3>>.0/27"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-3>>.0/27"
           },
           {
             "name": "priv-dmz-out-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-4>>.0/27"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-4>>.0/27"
           },
           {
             "name": "pub-dmz-in-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-5>>.0/27"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-5>>.0/27"
           },
           {
             "name": "pub-dmz-out-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-6>>.0/27"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-6>>.0/27"
           },
           {
             "name": "web-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-7>>.0/24"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-7>>.0/24"
           },
           {
             "name": "biz-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-8>>.0/24"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-8>>.0/24"
           },
           {
             "name": "data-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-9>>.0/24"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-9>>.0/24"
           },
           {
             "name": "research-<<environment>>-<<location>>",
-            "addressPrefix": "10.196.<<increment-10>>.0/24"
+            "addressPrefix": "<<octet1>>.<<octet2>>.<<octetincrement-10>>.0/24"
           }
         ],
         "dnsServers": []
